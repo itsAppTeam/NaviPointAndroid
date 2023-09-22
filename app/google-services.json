@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "370164997728",
+    "project_id": "navipoint-598ba",
+    "storage_bucket": "navipoint-598ba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:370164997728:android:315603e4c8010c87e3ad05",
+        "android_client_info": {
+          "package_name": "com.example.navipoint"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "370164997728-i88jlgb1qblqteqiqkf65mrqfj2ft7bb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9m5w23md3IfGM81VSpaGltN3RFyZZRD8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "370164997728-hralkhaorgbtcvjjbbunleq1mmqa8h77.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "370164997728-35qksbtn1msindlqv2uahkqkuvijsqfo.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dmitriy.multi.NaviPoint"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
