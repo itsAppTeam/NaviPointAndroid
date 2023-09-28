@@ -22,6 +22,7 @@ import com.example.navipoint.screens.AddProfileScreen
 import com.example.navipoint.screens.AuthorizationScreen
 import com.example.navipoint.signin.GoogleAuthUIClient
 import com.example.navipoint.signin.SignInViewModel
+import com.example.navipoint.signin.UserData
 import kotlinx.coroutines.launch
 
 @Composable
@@ -32,7 +33,7 @@ fun NavGraph(
 
 ) {
     val context = LocalContext.current
-    var startDestination = Screens.AuthorizationScreen.route
+    var startDestination = Screens.AddProfileScreen.route
     val coroutineScope = rememberCoroutineScope()
 
     NavHost(navController = navController, startDestination = startDestination) {
@@ -65,6 +66,9 @@ fun NavGraph(
             }
         }
         composable("add_profile") {
+            AddProfileScreen(userData = UserData(userId = "", userName = null, profilePictureUrl = null)) {
+
+            }
 //            AddProfileScreen(
 //                userData = googleAuthUiClient.getSignInUser()
 //            ) {
