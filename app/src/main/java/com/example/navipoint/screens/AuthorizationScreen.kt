@@ -32,11 +32,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.navipoint.R
+import com.example.navipoint.navigation.Screens
 import com.example.navipoint.signin.SingInState
 
 @Composable
 fun AuthorizationScreen(
+    navController: NavController,
     state: SingInState,
     signIn: () -> Unit
 ) {
@@ -86,7 +89,10 @@ fun AuthorizationScreen(
                 modifier = Modifier.width(320.dp),
                 border = BorderStroke(width = 1.dp, color = Color.White),
                 colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = Color.Black),
-                onClick = { signIn() }
+                onClick = {
+//                    signIn()
+                        navController.navigate(route = Screens.AddProfileScreen.route)
+                }
             ) {
                 Image(
                     modifier = Modifier.size(24.dp),

@@ -4,6 +4,7 @@ package com.example.navipoint.screens
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,6 +17,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.filled.Person
@@ -47,6 +49,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.W500
 import androidx.compose.ui.text.font.FontWeight.Companion.W700
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -63,13 +66,9 @@ fun AddProfileScreen(
 ) {
 
     var name: String by remember { mutableStateOf("") }
+    var phone: String by remember { mutableStateOf("") }
 
 
-
-    val groups = listOf<String>(
-        "Сеты", "Холодные ролы", "Запеченные роллы",
-        "Жаренные роллы", "Лимонады", "Воки", "Закуски", "Десерты"
-    )
 
 
     var expanded by remember {
@@ -77,7 +76,7 @@ fun AddProfileScreen(
     }
     var selectedGroup: String by remember {
         mutableStateOf(
-            "Hey")
+            "")
 
     }
 
@@ -139,8 +138,8 @@ fun AddProfileScreen(
 
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
-            value = name,
-            onValueChange = { name = it },
+            value = phone,
+            onValueChange = { phone = it },
             maxLines = 1,
             label = {
                 Text(
@@ -153,7 +152,8 @@ fun AddProfileScreen(
                 containerColor = Color.White,
                 focusedLabelColor = colorResource(id = R.color.navi_orange),
                 focusedBorderColor = colorResource(id = R.color.navi_orange)
-            )
+            ),
+            keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Phone)
         )
         ExposedDropdownMenuBox(
 
@@ -168,7 +168,9 @@ fun AddProfileScreen(
 
             OutlinedTextField(
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .fillMaxWidth()
+                    .menuAnchor()
+                ,
                 value = selectedGroup,
                 readOnly = true,
                 onValueChange = {},

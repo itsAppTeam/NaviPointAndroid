@@ -33,7 +33,7 @@ fun NavGraph(
 
 ) {
     val context = LocalContext.current
-    var startDestination = Screens.AddProfileScreen.route
+    var startDestination = Screens.AuthorizationScreen.route
     val coroutineScope = rememberCoroutineScope()
 
     NavHost(navController = navController, startDestination = startDestination) {
@@ -54,7 +54,7 @@ fun NavGraph(
                 })
             
 
-            AuthorizationScreen(state = state) {
+            AuthorizationScreen(navController = navController, state = state) {
                 coroutineScope.launch {
                     val signInIntentSender = googleAuthUiClient.signIn()
                     launcher.launch(
