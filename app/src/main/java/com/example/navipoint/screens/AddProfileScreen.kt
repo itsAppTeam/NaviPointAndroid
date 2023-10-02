@@ -196,7 +196,7 @@ fun AddProfileScreen(
 
                 ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Regions.allRegions.forEach {
+                    Regions.allRegions.sorted().forEach {
                         it
 
                         DropdownMenuItem(text = {Text(text = it, fontSize = 24.sp) }, onClick = {
