@@ -20,6 +20,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -27,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -61,16 +63,16 @@ fun AuthorizationScreen(
     ) {
         Image(
             modifier = Modifier,
-            painter = painterResource(id = R.drawable.regimage_1),
+            painter = painterResource(id = R.drawable.main_bg),
             contentDescription = "back",
             contentScale = ContentScale.FillHeight
         )
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = Color.Black.copy(alpha = 0.3f)
-        ) {
-
-        }
+//        Surface(
+//            modifier = Modifier.fillMaxSize(),
+//            color = Color.Black.copy(alpha = 0.3f)
+//        ) {
+//
+//        }
 
         Column(
             modifier = Modifier
@@ -79,12 +81,14 @@ fun AuthorizationScreen(
             verticalArrangement = Arrangement.Center
 
         ) {
+            Spacer(modifier = Modifier.height(220.dp))
             Image(
                 modifier = Modifier,
                 painter = painterResource(id = R.drawable.navi_logo),
                 contentDescription = "back",
                 contentScale = ContentScale.FillHeight
             )
+            Spacer(modifier = Modifier.height(220.dp))
             Button(
                 modifier = Modifier.width(320.dp),
                 border = BorderStroke(width = 1.dp, color = Color.White),
@@ -121,6 +125,26 @@ fun AuthorizationScreen(
                     fontSize = 17.sp,
                     fontWeight = FontWeight.W700
                 )
+            }
+            Spacer(modifier = Modifier.height(24.dp))
+            TextButton(
+                onClick = { /*TODO*/ },
+                colors = ButtonDefaults.buttonColors(contentColor = Color.White, containerColor = colorResource(
+                    id = R.color.dark_backfound
+                )
+                )
+            ) {
+                Text(text = "Информация о приложении")
+            }
+
+            TextButton(
+                onClick = { /*TODO*/ },
+                colors = ButtonDefaults.buttonColors(contentColor = Color.White, containerColor = colorResource(
+                    id = R.color.dark_backfound
+                )
+                )
+            ) {
+                Text(text = "Контакты администрации")
             }
         }
 

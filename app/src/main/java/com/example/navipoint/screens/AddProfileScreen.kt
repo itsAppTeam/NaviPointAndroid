@@ -97,6 +97,7 @@ fun AddProfileScreen(
 
         Box(
             modifier = Modifier
+                .padding(bottom = 40.dp)
                 .size(120.dp)
                 .background(
                     color = colorResource(id = R.color.viola),
@@ -105,7 +106,9 @@ fun AddProfileScreen(
                 .border(
                     border = BorderStroke(width = 2.dp, color = Color.White),
                     shape = CircleShape
-                ),
+                )
+
+            ,
             contentAlignment = Alignment.Center
         ) {
             Icon(
