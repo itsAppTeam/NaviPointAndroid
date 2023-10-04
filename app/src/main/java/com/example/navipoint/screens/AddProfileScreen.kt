@@ -1,6 +1,8 @@
 package com.example.navipoint.screens
 
 
+import android.annotation.SuppressLint
+import androidx.activity.viewModels
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -38,6 +40,8 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextFieldColors
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -45,6 +49,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.W500
@@ -54,21 +59,30 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.navipoint.R
+import com.example.navipoint.signin.SignInViewModel
 import com.example.navipoint.signin.UserData
 import com.example.navipoint.tools.Regions
 import com.example.navipoint.ui.theme.NaviPointTheme
 
+@SuppressLint("StateFlowValueCalledInComposition")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddProfileScreen(
+    signInViewModel: SignInViewModel,
     userData: UserData,
     onSignOut: () -> Unit
 ) {
+    val context = LocalContext.current
+
 
     var name: String by remember { mutableStateOf("") }
     var phone: String by remember { mutableStateOf("") }
 
+    val cities = signInViewModel.citiesFlow.collectAsState()
+    LaunchedEffect(key1 = "", block = {
+        signInViewModel.getCities(context = context)
 
+    })
 
 
     var expanded by remember {
@@ -77,7 +91,6 @@ fun AddProfileScreen(
     var selectedGroup: String by remember {
         mutableStateOf(
             "")
-
     }
 
     Column(
@@ -87,6 +100,10 @@ fun AddProfileScreen(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
+        Text(text = "Города //// ${cities.value.count()}", color = Color.White)
+        Text(text = "Города //// ${signInViewModel.regionsFlow.value.count()}", color = Color.White)
+
         Text(
             modifier = Modifier.padding(bottom = 40.dp),
             text = "Создание профиля",
@@ -107,7 +124,6 @@ fun AddProfileScreen(
                     border = BorderStroke(width = 2.dp, color = Color.White),
                     shape = CircleShape
                 )
-
             ,
             contentAlignment = Alignment.Center
         ) {
@@ -175,8 +191,8 @@ fun AddProfileScreen(
                     .menuAnchor()
                 ,
                 value = selectedGroup,
-                readOnly = true,
-                onValueChange = {},
+                readOnly = false,
+                onValueChange = {selectedGroup = it},
                 label = {
                     Text(text = "") }
                 ,
@@ -199,9 +215,8 @@ fun AddProfileScreen(
 
                 ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Regions.allRegions.sorted().forEach {
+                    signInViewModel.regionsFlow.value.sorted().forEach() {
                         it
-
                         DropdownMenuItem(text = {Text(text = it, fontSize = 24.sp) }, onClick = {
                             selectedGroup = it
                             expanded = false
@@ -257,21 +272,21 @@ fun AddProfileScreen(
     }
 }
 
-
-@Preview(showBackground = true, backgroundColor = 12.3.toLong())
-@Composable
-fun AddProfileScreenPreview() {
-
-    fun test() {}
-    NaviPointTheme {
-        AddProfileScreen(
-            userData = UserData(
-                userId = "113",
-                userName = "Hey",
-                profilePictureUrl = ""
-            )
-        ) {
-
-        }
-    }
-}
+//
+//@Preview(showBackground = true, backgroundColor = 12.3.toLong())
+//@Composable
+//fun AddProfileScreenPreview() {
+//
+//    fun test() {}
+//    NaviPointTheme {
+//        AddProfileScreen(
+//            userData = UserData(
+//                userId = "113",
+//                userName = "Hey",
+//                profilePictureUrl = ""
+//            )
+//        ) {
+//
+//        }
+//    }
+//}

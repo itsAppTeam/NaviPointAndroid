@@ -28,6 +28,7 @@ import kotlinx.coroutines.launch
 @Composable
 
 fun NavGraph(
+    signInViewModel: SignInViewModel,
     navController: NavHostController,
     googleAuthUiClient: GoogleAuthUIClient
 
@@ -66,7 +67,7 @@ fun NavGraph(
             }
         }
         composable("add_profile") {
-            AddProfileScreen(userData = UserData(userId = "", userName = null, profilePictureUrl = null)) {
+            AddProfileScreen(signInViewModel = signInViewModel, userData = UserData(userId = "", userName = null, profilePictureUrl = null)) {
 
             }
 //            AddProfileScreen(

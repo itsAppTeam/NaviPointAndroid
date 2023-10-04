@@ -7,5 +7,4 @@ data class RacePoint(
     var cost: Int? = null,
     var imageUrls: List<String>? = null,
     var districtId: String? = null
-
 )
