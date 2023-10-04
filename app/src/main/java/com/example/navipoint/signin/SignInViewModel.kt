@@ -33,7 +33,7 @@ class SignInViewModel: ViewModel() {
         if (cities != null) {
             citiesFlow.update { cities }
             val regions: Set<String> = cities.map { it.subject }.toSet()
-            regionsFlow.update { regions.toList() }
+            regionsFlow.update { regions.toList().sorted() }
         }
     }
 
