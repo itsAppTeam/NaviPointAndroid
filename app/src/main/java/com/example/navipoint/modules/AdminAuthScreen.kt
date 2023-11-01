@@ -12,12 +12,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBackIos
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.AlertDialogDefaults.containerColor
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -26,11 +30,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.navipoint.R
 import com.example.navipoint.ui.theme.NaviPointTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -95,7 +101,8 @@ fun AdminAuthScreen() {
                         value = login,
                         onValueChange = {
                             login = it
-                        }
+                        },
+                        colors = TextFieldDefaults.textFieldColors(containerColor = Color.White)
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(text = "Введите пароль", color = Color.White,)
@@ -104,26 +111,52 @@ fun AdminAuthScreen() {
                         value = password,
                         onValueChange = {
                             password = it
-                        }
+                        },
+                        colors = TextFieldDefaults.textFieldColors(containerColor = Color.White)
                     )
                     Spacer(modifier = Modifier.height(32.dp))
 
                     Button(
-                        modifier = Modifier.fillMaxWidth(),
-                        onClick = { /*TODO*/ }) {
+                        modifier = Modifier
+                            .padding(horizontal = 64.dp)
+                            .fillMaxWidth()
 
-                        Text(text = "Войти")
+                        ,
+                        colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.navi_orange)),
+                        onClick = { /*TODO*/ }
+                    ) {
+                        Row (modifier = Modifier
+                            .padding(vertical = 8.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ){
+                            Icon(
+                                imageVector = Icons.Filled.Person,
+                                contentDescription = "",
+                                tint = Color.White
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Text(text = "Войти", fontSize = 20.sp)
+                        }
                     }
                 }
+                Row(
+                    Modifier
+                        .padding(bottom = 24.dp)
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center,
 
-                Text(
-                    text = "Хотите стать админом и помогать нам?\n" +
-                            "Заполните форму, мы с вами свяжемся.",
-                    color = Color.White,
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.W500,
-                    textAlign = TextAlign.Center
-                )
+                ) {
+
+
+                    Text(
+                        text = "Хотите стать админом и помогать нам?\n" +
+                                "Заполните форму, мы с вами свяжемся.",
+                        color = Color.White,
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.W500,
+                        textAlign = TextAlign.Center
+                    )
+                }
 
 
             }

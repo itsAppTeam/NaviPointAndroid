@@ -81,7 +81,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.7.3'
     implementation 'androidx.navigation:navigation-ui-ktx:2.7.3'
     //ICONS
-    implementation 'androidx.compose.material:material-icons-extended-android:1.5.1'
+    implementation 'androidx.compose.material:material-icons-extended-android:1.5.4'
 
     //MOSHI
     implementation "com.squareup.moshi:moshi-kotlin:1.14.0" 

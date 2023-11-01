@@ -127,6 +127,7 @@ class MainActivity : ComponentActivity() {
                     setContent {
                         NaviPointTheme {
 //                            AddProfileScreen()
+                            
 
                         }
 
