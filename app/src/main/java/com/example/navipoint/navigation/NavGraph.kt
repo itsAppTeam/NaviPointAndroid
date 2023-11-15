@@ -18,6 +18,8 @@ import androidx.navigation.NavGraph
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.navipoint.modules.AdminMainScreen
+import com.example.navipoint.modules.AdminMapScreen
 import com.example.navipoint.screens.AddProfileScreen
 import com.example.navipoint.screens.AuthorizationScreen
 import com.example.navipoint.signin.GoogleAuthUIClient
@@ -34,7 +36,7 @@ fun NavGraph(
 
 ) {
     val context = LocalContext.current
-    var startDestination = Screens.AuthorizationScreen.route
+    var startDestination = Screens.AdminMapScreen.route
     val coroutineScope = rememberCoroutineScope()
 
     NavHost(navController = navController, startDestination = startDestination) {
@@ -78,6 +80,14 @@ fun NavGraph(
 //                }
 //
 //            }
+        }
+
+        composable("admin_main") {
+            AdminMainScreen()
+        }
+
+        composable("admin_map") {
+            AdminMapScreen()
         }
     }
 

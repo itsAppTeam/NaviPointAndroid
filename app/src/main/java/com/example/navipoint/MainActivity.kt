@@ -35,6 +35,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.yandex.mapkit.MapKitFactory
 
 class MainActivity : ComponentActivity() {
 
@@ -67,6 +68,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        MapKitFactory.setApiKey("b24b0f40-d952-4e67-83d5-8edc56445bfb")
 
         mAuth = FirebaseAuth.getInstance()
 
